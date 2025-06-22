@@ -460,7 +460,7 @@ function initContactForm() {
         submitButton.disabled = true;
         
         setTimeout(() => {
-            showNotification('Thank you for your message! I\'ll get back to you within 24 hours.', 'success');
+            showNotification('Thank you for your message! I\'ll get back to you within 48 hours.', 'success');
             this.reset();
             submitButton.textContent = originalText;
             submitButton.disabled = false;
