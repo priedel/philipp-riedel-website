@@ -553,35 +553,44 @@
                     <h3>Let's Connect</h3>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span>hello@fiosophia.ch</span>
+                        <a href="mailto:philipp@systems-strategy.com" target="_blank">Send Email</a>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
+                        <a href="https://wa.me/41795556170?text=Hi%2C%20my%20name%20is%20" target="_blank">Send WhatsApp</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
                         <a href="https://www.linkedin.com/in/philipp-riedel/" target="_blank">LinkedIn Profile</a>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Zürich, Switzerland</span>
+                        <span>Zürich, Switzerland and Asunción, Paraguay</span>
                     </div>
                     <div class="office-hours">
                         <h4>Office Hours</h4>
-                        <p>Monday - Friday: 9:00 AM - 6:00 PM CET</p>
+                        <p>Monday - Saturday: 12:00 PM - 10:00 PM CET</p>
                         <p>Available for global collaboration</p>
                     </div>
                 </div>
-                <form class="contact-form">
+                <form class="contact-form" method="POST" action="send_email.php" id="contactForm">
                     <div class="form-group">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <input type="text" id="name" name="name" class="form-control" required minlength="2" maxlength="50">
+                        <div class="error-message" id="name-error"></div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" id="email" name="email" class="form-control" required>
+                        <div class="error-message" id="email-error"></div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="company" class="form-label">Company</label>
-                        <input type="text" id="company" name="company" class="form-control">
+                        <input type="text" id="company" name="company" class="form-control" maxlength="100">
                     </div>
+                    
                     <div class="form-group">
                         <label for="budget" class="form-label">Project Budget Range</label>
                         <select id="budget" name="budget" class="form-control">
@@ -592,11 +601,25 @@
                             <option value="100k+">$100K+</option>
                         </select>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" maxlength="100">
+                    </div>
+                    
                     <div class="form-group">
                         <label for="message" class="form-label">Project Description</label>
-                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        <textarea id="message" name="message" class="form-control" rows="5" required minlength="10" maxlength="1000"></textarea>
+                        <div class="error-message" id="message-error"></div>
                     </div>
+                    
+                    <!-- Honeypot field for spam detection -->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
+                    </div>
+                    
                     <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+                    <div id="form-status"></div>
                 </form>
             </div>
         </div>
@@ -607,17 +630,16 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="logo">fiosophia</span>
+                    <span class="logo">Systems and Strategy</span>
                     <p>Transforming challenges into opportunities through systems thinking and strategic innovation.</p>
                 </div>
                 <div class="footer-links">
                     <a href="https://www.linkedin.com/in/philipp-riedel/" target="_blank">LinkedIn</a>
-                    <a href="mailto:hello@fiosophia.ch">Email</a>
-                    <a href="https://design.fiosophia.ch" target="_blank">Design Portfolio</a>
+                    <a href="mailto:philipp@systems-strategy.com">Email</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 fiosophia GmbH. All rights reserved.</p>
+                <p>&copy; 2025 fiosophia GmbH. All rights reserved. Made by Philipp Riedel and <a href="https://perplexity.ai" target="_blank" class="ai">Perplexity</a></p>
             </div>
         </div>
     </footer>
@@ -630,6 +652,7 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/sendEmail.js"></script>
 </body>
 </html>
