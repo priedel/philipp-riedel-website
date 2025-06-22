@@ -1,11 +1,10 @@
-
 :root {
   /* Colors */
   --color-background: rgba(252, 252, 249, 1);
   --color-surface: rgba(255, 255, 253, 1);
   --color-text: rgba(19, 52, 59, 1);
   --color-text-secondary: rgba(98, 108, 113, 1);
-  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary: rgba(0, 119, 181, 1)
   --color-primary-hover: rgba(29, 116, 128, 1);
   --color-primary-active: rgba(26, 104, 115, 1);
   --color-secondary: rgba(94, 82, 64, 0.12);
@@ -331,15 +330,17 @@ pre code {
 
 .btn--primary {
   background: var(--color-primary);
-  color: var(--color-btn-primary-text);
+  color: var(--color-background);
 }
 
 .btn--primary:hover {
-  background: var(--color-primary-hover);
+  background: var(--color-background);
+  color: var(--color-primary);
 }
 
 .btn--primary:active {
-  background: var(--color-primary-active);
+  background: var(--color-background);
+  color: var(--color-primary);
 }
 
 .btn--secondary {
@@ -658,7 +659,7 @@ select.form-control {
 
 /* Custom color overrides for the specific design */
 :root {
-  --color-primary: #28a7e9;
+  --color-primary: #2196d8;
   --color-primary-hover: #2196d8;
   --color-primary-active: #1e88c7;
   --color-dark-bg: #303030;
@@ -697,7 +698,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 #preloader.fade-out {
@@ -811,7 +812,7 @@ body {
 
 .hero-video {
   position: absolute;
-  top: 20px;
+  top: 100px;
   right: 20px;
   z-index: 2;
 }
@@ -850,6 +851,7 @@ body {
   font-size: 4rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: var(--color-primary);
   opacity: 0;
   animation: fadeInUp 1s ease forwards 0.5s;
 }
@@ -990,23 +992,26 @@ section {
   justify-content: center;
 }
 
-.profile-placeholder {
+.profile-image {
   width: 300px;
   height: 300px;
-  background: var(--color-surface);
   border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
   border: 4px solid var(--color-primary);
   box-shadow: var(--shadow-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.profile-placeholder i {
-  font-size: 4rem;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
+.profile-image:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Experience Section */
@@ -1061,41 +1066,163 @@ section {
   margin-bottom: 1rem;
 }
 
+/* Timeline Styles - Fixed Alignment */
 .timeline {
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 80px 0;
+  position: relative;
 }
 
 .timeline h3 {
   text-align: center;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  margin-bottom: 100px;
   color: var(--color-primary);
+  order: -1;
 }
 
-.timeline-item {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+.horizontal-timeline {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  height: 580px; /* Increased height for more vertical space */
+  margin-top: 40px; /* Additional top margin for separation */
+}
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform: translateY(-50%);
 }
 
-.timeline-date {
-  font-weight: 600;
+.timeline-station {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.station-line {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  background-color: var(--color-primary);
+  transform: translateX(-50%);
+}
+
+/* UP STATIONS - With increased spacing */
+.timeline-station.up .station-line {
+  top: auto;
+  bottom: 50%;
+  height: 150px; /* Increased height for more space */
+}
+
+.timeline-station.up .company-name {
+  position: absolute;
+  white-space: nowrap;
   color: var(--color-primary);
+  font-weight: bold;
+  font-size: 1rem;
+  left: +12px;
+  bottom: calc(50% + 160px); /* Adjusted for increased spacing */
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  text-align: left;
 }
 
-.timeline-content h4 {
-  margin-bottom: 0.5rem;
+.timeline-station.up .role-details {
+  position: absolute;
+  white-space: nowrap;
+  color: var(--color-background);
+  font-size: 0.9rem;
+  left: calc(50% + 50px);
+  bottom: calc(300px); /* Adjusted for increased spacing */
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  text-align: center;
 }
 
-.timeline-desc {
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.8);
-  display: block;
-  margin-top: 0.5rem;
+/* DOWN STATIONS - With increased spacing */
+.timeline-station.down .station-line {
+  top: 50%;
+  height: 150px; /* Increased height for more space */
 }
+
+.timeline-station.down .company-name {
+  position: absolute;
+  white-space: nowrap;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  right: 12px;
+  top: calc(50% + 160px); /* Adjusted for increased spacing */
+  transform: rotate(-90deg);
+  transform-origin: right top;
+  text-align: right;
+}
+
+.timeline-station.down .role-details {
+  position: absolute;
+  white-space: nowrap;
+  color: var(--color-background);
+  font-size: 0.9rem;
+  right: calc(50% - 8px);
+  top: calc(50% + 10px);
+  transform: rotate(-90deg);
+  transform-origin: right top;
+  text-align: center;
+}
+
+/* Mobile adjustments with increased spacing */
+@media (max-width: 768px) {
+  .timeline {
+    padding: 60px 0; /* Increased mobile padding */
+  }
+  
+  .timeline h3 {
+    margin-bottom: 60px; /* Increased mobile margin */
+  }
+  
+  .horizontal-timeline {
+    height: 600px; /* Increased mobile height */
+    overflow-x: auto;
+    margin-top: 30px;
+  }
+
+  .timeline-station.up .company-name,
+  .timeline-station.down .company-name {
+    font-size: 0.8rem;
+    max-width: 100px;
+  }
+
+  .timeline-station.up .role-details,
+  .timeline-station.down .role-details {
+    font-size: 0.7rem;
+    max-width: 120px;
+  }
+
+  /* Adjusted mobile spacing */
+  .timeline-station.up .company-name,
+  .timeline-station.up .role-details {
+    bottom: calc(50% + 120px);
+  }
+
+  .timeline-station.down .company-name,
+  .timeline-station.down .role-details {
+    top: calc(50% + 120px);
+  }
+  
+  .timeline-station.up .station-line,
+  .timeline-station.down .station-line {
+    height: 120px;
+  }
+}
+
+
 
 /* Services Section */
 .services {
@@ -1743,6 +1870,8 @@ section {
     display: flex;
   }
 
+  /* Contact buttons mobile styling */
+
   .hero-title {
     font-size: 2.5rem;
   }
@@ -1807,7 +1936,8 @@ section {
   .footer-links {
     justify-content: center;
   }
-}
+
+  
 
 /* Scroll animations */
 .fade-in {
@@ -1839,5 +1969,78 @@ section {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* Contact Buttons */
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.contact-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 40px !important;
+  padding: 30px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: var(--color-primary) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid var(--color-primary) !important;
+  margin: 10px !important;
+  transform: scale(1.2) !important;
+}
+
+.contact-btn:hover {
+  background: #fff !important;
+  color: var(--color-primary) !important;
+  transform: scale(1.3) !important;
+}
+
+.contact-btn i {
+  font-size: 40px !important;
+}
+/* Specific button styles */
+.whatsapp-btn:hover {
+  background: #25D366;
+  border-color: #25D366;
+}
+
+.email-btn:hover {
+  background: #EA4335;
+  border-color: #EA4335;
+}
+
+.linkedin-btn:hover {
+  background: #0077B5;
+  border-color: #0077B5;  
+}
+
+/* Mobile responsive - keep buttons large even on mobile */
+@media (max-width: 768px) {
+  .contact-buttons {
+    gap: 0.5rem;
+  }
+  
+  .contact-btn {
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 32px !important;
+    padding: 20px !important;
+    transform: scale(1.1) !important;
+  }
+  
+  .contact-btn i {
+    font-size: 32px !important;
+  }
+  
+  .contact-btn:hover {
+    transform: scale(1.2) !important;
   }
 }

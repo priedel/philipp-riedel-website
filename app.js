@@ -306,8 +306,9 @@ function initSkillsRadar() {
         { name: 'Systems Engineering', level: 0.95 },
         { name: 'Risk Management', level: 0.9 },
         { name: 'Innovation Strategy', level: 0.85 },
-        { name: 'Team Leadership', level: 0.8 },
-        { name: 'Laboratory Automation', level: 0.95 }
+        { name: 'Team Leadership', level: 0.75 },
+        { name: 'Requirements Engineering', level: 0.95 },
+        { name: 'Laboratory Automation', level: 0.7 }
     ];
     
     function drawRadar() {
