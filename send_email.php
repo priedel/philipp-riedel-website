@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // EMAIL 2: Send confirmation to customer
     $to_customer = $email;
-    $customer_subject = "Thank you for contacting Systems Strategy - Confirmation";
+    $customer_subject = "Thank you for contacting Systems and Strategy - Confirmation";
     
     $customer_body = "Dear $name,\n\n";
     $customer_body .= "Thank you for contacting Systems and Strategy. We have received your message and will get back to you as soon as possible.\n\n";
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $customer_body .= "Email: philipp@systems-strategy.com\n";
     $customer_body .= "Website: https://systems-strategy.com";
     
-    $customer_headers = "From: Systems Strategy <philipp@systems-strategy.com>\r\n";
+    $customer_headers = "From: Systems and Strategy <philipp@systems-strategy.com>\r\n";
     $customer_headers .= "Reply-To: philipp@systems-strategy.com\r\n";
     $customer_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $customer_headers .= "X-Mailer: PHP/" . phpversion();
