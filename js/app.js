@@ -50,7 +50,7 @@ function initNavigation() {
                 
                 if (targetElement) {
                     // Adjust offset for fixed header
-                    const headerOffset = 80;
+                    const headerOffset = 40;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     
