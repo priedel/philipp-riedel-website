@@ -311,18 +311,49 @@ function initializeSpiderCharts() {
         svgId: 'softSkillsChart',
         sectionId: 'soft-skills',
         skills: [
-            { name: 'Systems Thinking', value: 95 },
-            { name: 'Collaborative Leadership', value: 90 },
-            { name: 'Adaptability & Learning', value: 88 },
-            { name: 'Critical Problem-Solving', value: 92 },
-            { name: 'Stakeholder Management', value: 89 },
-            { name: 'Risk Awareness & Mitigation', value: 94 },
-            { name: 'Creative Innovation', value: 86 }
+            { name: 'Systems\nThinking', value: 95 },
+            { name: 'Collaborative\nLeadership', value: 90 },
+            { name: 'Adaptability\n& Learning', value: 98 },
+            { name: 'Critical\nProblem-Solving', value: 92 },
+            { name: 'Stakeholder\nManagement', value: 83 },
+            { name: 'Risk\nAwareness\n& Mitigation', value: 94 },
+            { name: 'Creative\nInnovation', value: 80 }
         ]
     });
     
-    // Add more spider charts as needed
-    // Hard Skills Chart, Tools Chart, etc.
+    // Hard Skills Chart
+    new SpiderChart({
+        svgId: 'hardSkillsChart',
+        sectionId: 'hard-skills',
+        skills: [
+            { name: 'Systems\nEngineering', value: 95 },
+            { name: 'Risk\nManagement', value: 94 },
+            { name: 'Laboratory\nAutomation', value: 60 },
+            { name: 'Product\nDevelopment', value: 90 },
+            { name: 'Cross-Industry\nIntegration', value: 90 },
+            { name: 'Project\nManagement', value: 80 },
+            { name: 'Technical\nDocumentation', value: 95 },
+            { name: 'Design\n& Prototyping', value: 85 },
+            { name: 'Internet \nof Things', value: 80 },
+            { name: 'Validation\n& Verification', value: 80 }
+        ]
+    });
+    
+    // Tools & Technologies Chart
+    new SpiderChart({
+        svgId: 'toolsChart',
+        sectionId: 'tools-tech',
+        skills: [
+            { name: 'Programming\nLanguages', value: 80 },
+            { name: 'Documentation\nTools', value: 90 },
+            { name: 'Data Science\nLibraries', value: 80 },
+            { name: 'Visualization\nTools', value: 80 },
+            { name: 'Computer\nVision', value: 50 },
+            { name: 'CAD \n& Design', value: 60 },
+            { name: 'Big Data\nTools', value: 40 },
+            { name: 'Database\nTechnologies', value: 50 }
+        ]
+    });
 }
 
 
@@ -332,7 +363,7 @@ class SpiderChart {
         this.skills = config.skills;
         this.sectionId = config.sectionId;
         this.center = { x: 250, y: 250 };
-        this.maxRadius = 180;
+        this.maxRadius = 240;
         this.levels = 5;
         
         this.init();
@@ -454,7 +485,7 @@ class SpiderChart {
         
         this.skills.forEach((skill, i) => {
             const angle = (i * 2 * Math.PI) / this.skills.length - Math.PI / 2;
-            const labelRadius = this.maxRadius + 30;
+            const labelRadius = this.maxRadius - 80;
             const x = this.center.x + Math.cos(angle) * labelRadius;
             const y = this.center.y + Math.sin(angle) * labelRadius;
             
@@ -464,7 +495,23 @@ class SpiderChart {
             text.setAttribute('class', 'spider-axis-label');
             text.setAttribute('data-skill', i);
             text.setAttribute('data-chart', this.sectionId);
-            text.textContent = skill.name;
+            
+            // Multi-line support using <tspan>, vertically centered
+            const lines = skill.name.split('\n').map(line => line.trim());
+            const lineHeight = 1.3; // em units
+            const totalLines = lines.length;
+            const startDy = -((totalLines - 1) / 2) * lineHeight + 'em';
+            lines.forEach((line, idx) => {
+                const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+                tspan.textContent = line;
+                tspan.setAttribute('x', x);
+                if (idx === 0) {
+                    tspan.setAttribute('dy', startDy);
+                } else {
+                    tspan.setAttribute('dy', lineHeight + 'em');
+                }
+                text.appendChild(tspan);
+            });
             
             if (x > this.center.x + 10) {
                 text.setAttribute('text-anchor', 'start');
@@ -607,13 +654,13 @@ document.addEventListener('DOMContentLoaded', function() {
         svgId: 'softSkillsChart',
         sectionId: 'soft-skills',
         skills: [
-            { name: 'Systems Thinking', value: 95 },
-            { name: 'Collaborative Leadership', value: 90 },
-            { name: 'Adaptability & Learning', value: 88 },
-            { name: 'Critical Problem-Solving', value: 92 },
-            { name: 'Stakeholder Management', value: 89 },
-            { name: 'Risk Awareness & Mitigation', value: 94 },
-            { name: 'Creative Innovation', value: 86 }
+            { name: 'Systems\nThinking', value: 95 },
+            { name: 'Collaborative\nLeadership', value: 90 },
+            { name: 'Adaptability\n& Learning', value: 98 },
+            { name: 'Critical\nProblem-Solving', value: 92 },
+            { name: 'Stakeholder\nManagement', value: 83 },
+            { name: 'Risk\nAwareness\n& Mitigation', value: 94 },
+            { name: 'Creative\nInnovation', value: 80 }
         ]
     });
     
@@ -622,12 +669,16 @@ document.addEventListener('DOMContentLoaded', function() {
         svgId: 'hardSkillsChart',
         sectionId: 'hard-skills',
         skills: [
-            { name: 'Software Engineering', value: 90 },
-            { name: 'Data Analysis', value: 85 },
-            { name: 'System Architecture', value: 88 },
-            { name: 'Project Management', value: 82 },
-            { name: 'Quality Assurance', value: 87 },
-            { name: 'Documentation', value: 89 }
+            { name: 'Systems\nEngineering', value: 95 },
+            { name: 'Risk\nManagement', value: 94 },
+            { name: 'Laboratory\nAutomation', value: 60 },
+            { name: 'Product\nDevelopment', value: 90 },
+            { name: 'Cross-Industry\nIntegration', value: 90 },
+            { name: 'Project\nManagement', value: 80 },
+            { name: 'Technical\nDocumentation', value: 95 },
+            { name: 'Design\n& Prototyping', value: 85 },
+            { name: 'Internet \nof Things', value: 80 },
+            { name: 'Validation\n& Verification', value: 80 }
         ]
     });
     
@@ -636,12 +687,14 @@ document.addEventListener('DOMContentLoaded', function() {
         svgId: 'toolsChart',
         sectionId: 'tools-tech',
         skills: [
-            { name: 'MATLAB/Simulink', value: 95 },
-            { name: 'Python', value: 88 },
-            { name: 'SQL/Databases', value: 85 },
-            { name: 'CAD Software', value: 82 },
-            { name: 'Git/Version Control', value: 90 },
-            { name: 'Cloud Platforms', value: 78 }
+            { name: 'Programming\nLanguages', value: 80 },
+            { name: 'Documentation\nTools', value: 90 },
+            { name: 'Data Science\nLibraries', value: 80 },
+            { name: 'Visualization\nTools', value: 80 },
+            { name: 'Computer\nVision', value: 50 },
+            { name: 'CAD \n& Design', value: 60 },
+            { name: 'Big Data\nTools', value: 40 },
+            { name: 'Database\nTechnologies', value: 50 }
         ]
     });
 });

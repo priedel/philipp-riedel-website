@@ -1068,14 +1068,14 @@ section {
 
 /* Timeline Styles - Fixed Alignment */
 .timeline {
-  padding: 60px 0;
+  padding: 100px 0;
   position: relative;
 }
 
 .timeline h3 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
   color: var(--color-primary);
   order: -1;
 }
@@ -1194,20 +1194,110 @@ section {
 /* Mobile adjustments with increased spacing */
 @media (max-width: 768px) {
   .timeline {
-    padding: 60px 0; /* Increased mobile padding */
+    padding: 80px 0; /* Increased mobile padding */
   }
   
   .timeline h3 {
-    margin-bottom: 60px; /* Increased mobile margin */
-  }
-  
-  .horizontal-timeline {
-    height: 600px; /* Increased mobile height */
-    overflow-x: auto;
-    margin-top: 30px;
+    margin-bottom: 50px; /* Increased mobile margin */
   }
 
-  .timeline-station.up .company-name,
+  .horizontal-timeline {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    height: 640px; /* Increased height for more vertical space */
+    margin-top: 10px; /* Additional top margin for separation */
+  }
+  .timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transform: translateY(-50%);
+  }
+  
+
+    /* UP STATIONS - With increased spacing */
+  .timeline-station.up .station-line {
+    top: auto;
+    bottom: 50%;
+    height: 50px; /* Increased height for more space */
+  }
+
+  .timeline-station.up .company-name {
+    position: absolute;
+    white-space: nowrap;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 0.8rem;
+    left: calc(50% + 8px);
+    bottom: calc(50% + 58px); /* Adjusted for increased spacing */
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    text-align: left;
+  }
+
+  .timeline-station.up .role-details {
+    position: absolute;
+    white-space: nowrap;
+    color: var(--color-background);
+    font-size: 0.7rem;
+    left: calc(50% + 18px);
+    bottom: calc(328px); /* Adjusted for increased spacing */
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    text-align: center;
+  }
+  .role-details .period {
+    font-size: 0.6rem;
+    font-style: italic;
+    color: var(--color-background);
+    padding-left: 8px; /* Adds a little space before the date */
+  }
+
+  /* DOWN STATIONS - With increased spacing */
+  .timeline-station.down .station-line {
+    top: 50%;
+    height: 50px; /* Increased height for more space */
+  }
+
+  .timeline-station.down .company-name {
+    position: absolute;
+    white-space: nowrap;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    right: 12px;
+    top: calc(50% + 60px); /* Adjusted for increased spacing */
+    transform: rotate(-90deg);
+    transform-origin: right top;
+    text-align: right;
+  }
+
+  .timeline-station.down .role-details {
+    position: absolute;
+    white-space: nowrap;
+    color: var(--color-background);
+    font-size: 0.7rem;
+    right: calc(50% - 4px);
+    top: calc(50% + 8px);
+    transform: rotate(-90deg);
+    transform-origin: right top;
+    text-align: center;
+  }
+
+  .role-details .period {
+      font-size: 0.6em;
+      font-style: italic;
+      color: #999;
+      padding-left: 8px; /* Adds a little space before the date */
+  }
+
+
+
+  /*  .timeline-station.up .company-name,
   .timeline-station.down .company-name {
     font-size: 0.8rem;
     max-width: 100px;
@@ -1217,12 +1307,12 @@ section {
   .timeline-station.down .role-details {
     font-size: 0.7rem;
     max-width: 120px;
-  }
+  }*/
 
   /* Adjusted mobile spacing */
-  .timeline-station.up .company-name,
+  /*.timeline-station.up .company-name,
   .timeline-station.up .role-details {
-    bottom: calc(50% + 120px);
+    bottom: calc(50% + 60px);
   }
 
   .timeline-station.down .company-name,
@@ -1233,7 +1323,7 @@ section {
   .timeline-station.up .station-line,
   .timeline-station.down .station-line {
     height: 120px;
-  }
+  } */
 }
 
 
@@ -1763,7 +1853,7 @@ section {
 .spider-axis-label {
   fill: var(--color-background) !important;
   font-family: var(--font-family-primary);
-  font-size: 12px;
+  font-size: 16px; 
   font-weight: 600;
   opacity: 1 !important;
   text-anchor: middle;
@@ -1772,9 +1862,18 @@ section {
   transition: fill 0.3s ease, font-size 0.3s ease;
 }
 
+.spider-axis-label tspan {
+  text-anchor: inherit;
+}
+
 .spider-axis-label:hover {
   fill: var(--color-primary) !important;
-  font-size: 14px;
+  font-size: 18px; 
+}
+
+/* Adjust positioning for better spacing */
+.spider-chart-wrapper {
+  padding: 10rem; /* Increased padding to accommodate longer labels */
 }
 
 /* Generic Legend Styles */
@@ -1796,18 +1895,23 @@ section {
 .spider-legend-items {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1.2rem;
+  align-items: flex-start;
 }
 
 .spider-legend-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
-  padding: 0.8rem;
+  padding: 1.2rem 0.8rem;
   border-radius: var(--radius-base);
   cursor: pointer;
   transition: all 0.3s ease;
   background: rgba(40, 167, 233, 0.1);
+  min-height: 3.5em;
+  word-break: break-word;
+  min-width: 220px;
+  max-width: 400px;
 }
 
 .spider-legend-item:hover {
@@ -1831,6 +1935,9 @@ section {
 .spider-legend-item span {
   font-weight: 500;
   color: var(--color-background);
+  white-space: pre-line;
+  line-height: 1.2;
+  display: block;
 }
 
 /* Generic Skills Descriptions */
@@ -2313,4 +2420,5 @@ section {
   .contact-btn i {
     font-size: 1.1rem;
   }
+}
 }
