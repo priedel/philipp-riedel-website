@@ -2,9 +2,20 @@
   /* Colors */
   --color-background: rgba(252, 252, 249, 1);
   --color-surface: rgba(255, 255, 253, 1);
+  --color-white01: rgba(255, 255, 255, 0.1);
+  --color-white015: rgba(255, 255, 255, 0.15);
+  --color-white02: rgba(255, 255, 255, 0.2);
+  --color-white03: rgba(255, 255, 255, 0.3);
+  --color-white06: rgba(255, 255, 255, 0.6);
+  --color-white08: rgba(255, 255, 255, 0.8);
+  --color-white09: rgba(255, 255, 255, 0.9);
   --color-text: rgba(19, 52, 59, 1);
   --color-text-secondary: rgba(98, 108, 113, 1);
   --color-primary: rgba(0, 119, 181, 1);
+  --color-darkerBlue04:rgba(40, 167, 233, 0.4);
+  --color-darkerBlue03:rgba(40, 167, 233, 0.3);
+  --color-darkerBlue02:rgba(40, 167, 233, 0.2);
+  --color-darkerBlue01:rgba(40, 167, 233, 0.2);
   --color-primary-hover: rgba(29, 116, 128, 1);
   --color-primary-active: rgba(26, 104, 115, 1);
   --color-secondary: rgba(94, 82, 64, 0.12);
@@ -85,7 +96,7 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.02);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
     0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+  --shadow-inset-sm: inset 0 1px 0 var(--color-white015),
     inset 0 -1px 0 rgba(0, 0, 0, 0.03);
 
   /* Animation */
@@ -601,7 +612,7 @@ body {
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
+  border: 4px solid var(--color-white03);
   border-top: 4px solid var(--color-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -709,7 +720,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(10px);
   color: var(--color-background);
@@ -718,7 +729,7 @@ body {
 }
 
 .video-placeholder:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-white02);
   transform: scale(1.05);
 }
 
@@ -828,7 +839,7 @@ section {
 }
 
 .philosophy {
-  background: rgba(40, 167, 233, 0.1);
+  background: var(--color-darkerBlue01);
   padding: 2rem;
   border-left: 4px solid var(--color-primary);
   margin: 2rem 0;
@@ -920,7 +931,7 @@ section {
 }
 
 .framework-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   padding: 2rem;
   border-radius: var(--radius-lg);
   text-align: center;
@@ -929,7 +940,7 @@ section {
 
 .framework-card:hover {
   transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--color-white015);
 }
 
 .framework-icon {
@@ -1281,7 +1292,7 @@ section {
 }
 
 .portfolio-item {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -1346,7 +1357,7 @@ section {
 }
 
 .portfolio-meta .result {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-white02);
   color: var(--color-background);
   padding: 0.3rem 0.8rem;
   border-radius: var(--radius-full);
@@ -1478,7 +1489,7 @@ section {
   position: absolute;
   width: 100px;
   height: 100px;
-  background: rgba(40, 167, 233, 0.2);
+  background: var(--color-darkerBlue02);
   border: 2px solid var(--color-primary);
   border-radius: 50%;
   display: flex;
@@ -1490,7 +1501,7 @@ section {
 }
 
 .system-node:hover {
-  background: rgba(40, 167, 233, 0.4);
+  background: var(--color-darkerBlue04);
   transform: scale(1.1);
 }
 
@@ -1638,7 +1649,7 @@ section {
   height: 12px;
   border-radius: 50%;
   border: none;
-  background: rgba(40, 167, 233, 0.3);
+  background: var(--color-darkerBlue03);
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -1675,12 +1686,12 @@ section {
 
 .spider-chart-wrapper {
   position: relative;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-white02);
 }
 
 .spider-svg {
@@ -1689,26 +1700,26 @@ section {
   max-width: 400px;
   margin: 0 auto;
   display: block;
-  filter: drop-shadow(0 10px 20px rgba(40, 167, 233, 0.2));
+  filter: drop-shadow(0 10px 20px var(--color-darkerBlue02));
 }
 
 /* Generic SVG Elements - Fixed positioning without transforms */
 .spider-grid-circle {
   fill: none !important;
-  stroke: rgba(40, 167, 233, 0.3) !important;
+  stroke: var(--color-darkerBlue03)!important;
   stroke-width: 1 !important;
   opacity: 1 !important;
 }
 
 .spider-axis-line {
-  stroke: rgba(40, 167, 233, 0.4) !important;
+  stroke: var(--color-darkerBlue04) !important;
   stroke-width: 1 !important;
   fill: none !important;
   opacity: 1 !important;
 }
 
 .spider-data-area {
-  fill: rgba(40, 167, 233, 0.3) !important;
+  fill: var(--color-darkerBlue03) !important;
   stroke: var(--color-primary) !important;
   stroke-width: 2 !important;
   opacity: 0.8 !important;
@@ -1765,13 +1776,13 @@ section {
 
 /* Generic Legend Styles */
 .spider-legend {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
   margin-top: 2.5rem; /* or more, e.g., 3rem */
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-white02);
 }
 
 .spider-legend h4 {
@@ -1795,7 +1806,7 @@ section {
   border-radius: var(--radius-base);
   cursor: pointer;
   transition: all 0.3s ease;
-  background: rgba(40, 167, 233, 0.1);
+  background: var(--color-darkerBlue01);
   min-height: 3.5em;
   word-break: break-word;
   min-width: 220px;
@@ -1803,12 +1814,12 @@ section {
 }
 
 .spider-legend-item:hover {
-  background: rgba(40, 167, 233, 0.2);
+  background: var(--color-darkerBlue02);
   transform: translateX(5px);
 }
 
 .spider-legend-item.active {
-  background: rgba(40, 167, 233, 0.3);
+  background: var(--color-darkerBlue03);
   border-left: 4px solid var(--color-primary);
 }
 
@@ -1836,7 +1847,7 @@ section {
 .spider-detail {
   display: none;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   border-left: 4px solid var(--color-primary);
@@ -1868,7 +1879,7 @@ section {
   border-radius: var(--radius-full);
   font-weight: 600;
   font-size: 0.9rem;
-  box-shadow: 0 4px 8px rgba(40, 167, 233, 0.4);
+  box-shadow: 0 4px 8px var(--color-darkerBlue04);
 }
 
 /* Mobile responsiveness for all spider charts */
@@ -1946,7 +1957,7 @@ section {
 .stat {
   text-align: center;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   border-radius: var(--radius-lg);
 }
 
@@ -1959,11 +1970,11 @@ section {
 
 .stat-label {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-white08);
 }
 
 .newsletter-signup {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   padding: 3rem;
   border-radius: var(--radius-lg);
   text-align: center;
@@ -1980,7 +1991,7 @@ section {
   padding: 1rem;
   border: none;
   border-radius: var(--radius-base);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--color-white09);
 }
 
 /* Contact Section */
@@ -2029,7 +2040,7 @@ section {
 .office-hours {
   margin-top: 2rem;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   border-radius: var(--radius-lg);
 }
 
@@ -2039,13 +2050,13 @@ section {
 }
 
 .contact-form {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white01);
   padding: 3rem;
   border-radius: var(--radius-lg);
 }
 
 .contact-form .form-control {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--color-white09);
   border: none;
   color: var(--color-text);
 }
@@ -2121,7 +2132,7 @@ section {
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-white08);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -2133,8 +2144,8 @@ section {
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid var(--color-white02);
+  color: var(--color-white06);
 }
 
 /* Responsive Design */
